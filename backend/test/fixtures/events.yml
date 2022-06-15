@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  start: 2022-06-16 02:31:42
+  end: 2022-06-16 02:31:42
+  timed: false
+  description: MyText
+  color: MyString
+
+two:
+  name: MyString
+  start: 2022-06-16 02:31:42
+  end: 2022-06-16 02:31:42
+  timed: false
+  description: MyText
+  color: MyString
