@@ -1,14 +1,8 @@
 <template>
   <div>
-    <h1 class="text-h1">Calendar</h1>
-    <v-list>
-      <v-list-item v-for="event in events" :key="event.id">
-        {{ event.name }}
-      </v-list-item>
-    </v-list>
-    <v-btn type="submit" @click="fetchEvents()">fetchEvents</v-btn>
-
-    <CalendarDetails />
+    <v-sheet height="100vh">
+      <v-calendar></v-calendar>
+    </v-sheet>
   </div>
 </template>
 
