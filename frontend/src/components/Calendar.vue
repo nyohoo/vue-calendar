@@ -1,32 +1,27 @@
-  <template>
-    <div>
-      <h1>Calendar</h1>
-      <ul>
-        <li v-for="event in events" :key="event.id">
-          {{ event.name }}
-        </li>
-      </ul>
-      <button type="submit" @click="fetchEvents()">fetchEvents</button>
+<template>
+  <div>
+    <h1 class="text-h1">Calendar</h1>
+    <v-list>
+      <v-list-item v-for="event in events" :key="event.id">
+        {{ event.name }}
+      </v-list-item>
+    </v-list>
+    <v-btn type="submit" @click="fetchEvents()">fetchEvents</v-btn>
 
-      <CalendarDetails />
+    <CalendarDetails />
+  </div>
+</template>
 
-    </div>
-  </template>
+<script>
+import { mapGetters, mapActions } from 'vuex';
 
-  <script>
-  import { mapGetters, mapActions } from 'vuex';
-  import CalendarDetails from './CalendarDetails.vue';
-
-  export default {
-    name: "Calendar",
-    components: { 
-      CalendarDetails
-    },
-    computed: {
-      ...mapGetters('events', ['events']),
-    },
-    methods: {
-      ...mapActions('events', ['fetchEvents'])
-    },
+export default {
+  name: 'Calendar',
+  computed: {
+    ...mapGetters('events', ['events']),
+  },
+  methods: {
+    ...mapActions('events', ['fetchEvents']),
+  },
 };
-  </script>
+</script>
