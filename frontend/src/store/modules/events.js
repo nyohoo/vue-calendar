@@ -41,7 +41,7 @@ const actions = {
   },
   setEditMode({ commit }, bool) {
     commit('setEditMode', bool)
-  };
+  },
 };
 
 export default {
