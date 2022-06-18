@@ -48,7 +48,7 @@ export default {
         value: format(new Date(), "yyyy/MM/dd"),
     }),
     computed: {
-        ...mapGetters("events", ["events", "event", 'setEditMode']),
+        ...mapGetters("events", ["events", "event", 'isEditMode']),
         title() {
             return format(new Date(this.value), "yyyy年 M月");
         }
