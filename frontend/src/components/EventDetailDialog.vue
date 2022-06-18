@@ -39,9 +39,8 @@ export default {
     ...mapGetters("events", ["event"]),
   },
   methods: {
-    ...mapActions("events", ["setEvent", 'setEditMode']),
+    ...mapActions("events", ["setEvent"]),
     closeDialog() {
-      this.setEditMode(false);
       this.setEvent(null);
     },
   }
