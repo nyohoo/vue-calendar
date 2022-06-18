@@ -15,6 +15,7 @@ const getters = {
       end: new Date(event.end)
     };
   }),
+  // ここの処理がよくわからん・・・
   event: state => state.event ? {
     ...state.event,
     start: new Date(state.event.start),

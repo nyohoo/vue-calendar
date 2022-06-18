@@ -23,11 +23,11 @@
       ></v-calendar>
     </v-sheet>
 
-    <v-dialog :value="event !== null" width="600">
+    <v-dialog :value="event !== null" @click:outside="closeDialog" width="600">
       <div v-if="event !== null">
         <v-card class="pb-12">
           <v-card-actions class="d-flex justify-end pa-2">
-            <v-btn icon>
+            <v-btn icon @click="closeDialog">
               <v-icon size="20px">mdi-close</v-icon>
             </v-btn>
           </v-card-actions>
@@ -90,6 +90,9 @@ export default {
     },
     showEvent({ event }) {
       this.setEvent(event)
+    },
+    closeDialog() {
+      this.setEvent(null);
     }
   },
 };
