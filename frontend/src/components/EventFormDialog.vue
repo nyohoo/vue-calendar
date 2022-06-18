@@ -10,9 +10,9 @@
         <v-text-field v-model="name" label="タイトル"></v-text-field>
       </DialogSection>
     </v-card-text>
-    <v-card-actions class="d-flex justify-end">
+    <!-- <v-card-actions class="d-flex justify-end">
       <v-btn @click="submit">保存</v-btn>
-    </v-card-actions>
+    </v-card-actions> -->
   </v-card>
 </template>
 
