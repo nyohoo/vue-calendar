@@ -10,7 +10,7 @@
         <v-text-field v-model="name" label="タイトル"></v-text-field>
       </DialogSection>
       <DialogSection icon="mdi-clock-outline">
-        
+        <DateForm v-model="startDate" />
       </DialogSection>
     </v-card-text>
     <v-card-actions class="d-flex justify-end">
@@ -21,12 +21,14 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-import DialogSection from "./DialogSection.vue";
+import DialogSection from "./DialogSection";
+import DateForm from "./DateForm";
 
 export default {
   name: 'EventFormDialog',
   components: {
     DialogSection,
+    DateForm,
   },
   data: () => ({
     name: '',
