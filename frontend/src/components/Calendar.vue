@@ -24,45 +24,7 @@
     </v-sheet>
 
     <v-dialog :value="event !== null" @click:outside="closeDialog" width="600">
-      <div v-if="event !== null">
-        <v-card class="pb-12">
-          <v-card-actions class="d-flex justify-end pa-2">
-            <v-btn icon @click="closeDialog">
-              <v-icon size="20px">mdi-close</v-icon>
-            </v-btn>
-          </v-card-actions>
-          <v-card-title>
-            <v-row>
-              <v-col cols="2" class="d-flex justify-center align-center">
-                <v-icon size="20px" :color="event.color || 'blue'">mdi-square</v-icon>
-              </v-col>
-              <v-col class="d-flex align-center">
-                {{ event.name }}
-              </v-col>
-            </v-row>
-          </v-card-title>
-          <v-card-text>
-            <v-row>
-              <v-col cols="2" class="d-flex justify-center align-center">
-                <v-icon size="20px">mdi-clock-time-three-outline</v-icon>
-              </v-col>
-              <v-col class="d-flex align-center">
-                {{ event.start.toLocaleString() }} ~ {{ event.end.toLocaleString() }}
-              </v-col>
-            </v-row>
-          </v-card-text>
-          <v-card-text>
-            <v-row>
-              <v-col cols="2" class="d-flex justify-center align-center">
-                <v-icon size="20px">mdi-card-text-outline</v-icon>
-              </v-col>
-              <v-col class="d-flex align-center">
-                {{ event.description || 'no description' }}
-              </v-col>
-            </v-row>
-          </v-card-text>
-        </v-card>
-      </div>
+      <EventDetailDialog v-if="event !== null" />
     </v-dialog>
 
   </div>
@@ -71,29 +33,33 @@
 <script>
 import { format } from 'date-fns';
 import { mapGetters, mapActions } from 'vuex';
+import EventDetailDialog from './EventDetailDialog';
 
 export default {
-  name: 'Calendar',
-  data: () => ({
-    value: format(new Date(), 'yyyy/MM/dd'),
-  }),
-  computed: {
-    ...mapGetters('events', ['events', 'event']),
-    title() {
-      return format(new Date(this.value), 'yyyy年 M月');
-    }
-  },
-  methods: {
-    ...mapActions('events', ['fetchEvents', 'setEvent']),
-    setToday() {
-      this.value = format(new Date(), 'yyyy/MM/dd')
+    name: "Calendar",
+    components: {
+      EventDetailDialog,
     },
-    showEvent({ event }) {
-      this.setEvent(event)
+    data: () => ({
+        value: format(new Date(), "yyyy/MM/dd"),
+    }),
+    computed: {
+        ...mapGetters("events", ["events", "event"]),
+        title() {
+            return format(new Date(this.value), "yyyy年 M月");
+        }
     },
-    closeDialog() {
-      this.setEvent(null);
-    }
-  },
+    methods: {
+        ...mapActions("events", ["fetchEvents", "setEvent"]),
+        setToday() {
+            this.value = format(new Date(), "yyyy/MM/dd");
+        },
+        showEvent({ event }) {
+            this.setEvent(event);
+        },
+        closeDialog() {
+            this.setEvent(null);
+        }
+    },
 };
 </script>
