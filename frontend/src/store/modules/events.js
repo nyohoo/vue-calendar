@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { serializeEvent } from '../../functions/serializers';
 
 const apiUrl = 'http://localhost:3000';
 
@@ -9,19 +10,7 @@ const state = {
 };
 
 const getters = {
-  events: (state) => state.events.map(event => {
-    return {
-      ...event,
-      start: new Date(event.start),
-      end: new Date(event.end)
-    };
-  }),
-  // ここの処理がよくわからん・・・
-  event: state => state.event ? {
-    ...state.event,
-    start: new Date(state.event.start),
-    end: new Date(state.event.end)
-  } :null,
+  events: (state) => state.events.map(event => serializeEvent(event)),
   isEditMode: state => state.isEditMode,
 };
 
