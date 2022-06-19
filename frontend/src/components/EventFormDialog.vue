@@ -11,6 +11,7 @@
       </DialogSection>
       <DialogSection icon="mdi-clock-outline">
         <DateForm v-model="startDate" />
+        <DateForm v-model="endDate" />
       </DialogSection>
     </v-card-text>
     <v-card-actions class="d-flex justify-end">
@@ -23,6 +24,7 @@
 import { mapGetters, mapActions } from "vuex";
 import DialogSection from "./DialogSection";
 import DateForm from "./DateForm";
+import { format } from 'date-fns';
 
 export default {
   name: 'EventFormDialog',
@@ -33,9 +35,14 @@ export default {
   data: () => ({
     name: '',
     startDate: null,
+    endDate: null,
   }),
   computed: {
     ...mapGetters('events', ['event']),
+  },
+  created() {
+    this.startDate = format(this.event.start, 'yyyy/MM/dd');
+    this.endDate = format(this.event.end, 'yyyy/MM/dd');
   },
   methods: {
     ...mapActions('events', ['setEvent', 'setEditMode', 'createEvent']),
@@ -47,7 +54,7 @@ export default {
       const params = {
         name: this.name,
         start: this.startDate,
-        end: this.event.end,
+        end: this.endDate,
       };
       this.createEvent(params);
       this.closeDialog();
