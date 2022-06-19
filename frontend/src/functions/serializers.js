@@ -12,5 +12,6 @@ export const serializeEvent = event => {
     end,
     startDate: format(start, 'yyyy/MM/dd'),
     endDate: format(end, 'yyyy/MM/dd'),
+    color: event.color || '#2196F3',
   };
 };
