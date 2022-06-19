@@ -10,7 +10,8 @@ const state = {
 };
 
 const getters = {
-  events: (state) => state.events.map(event => serializeEvent(event)),
+  events: state => state.events.map(event => serializeEvent(event)),
+  event: state => serializeEvent(state.event),
   isEditMode: state => state.isEditMode,
 };
 
