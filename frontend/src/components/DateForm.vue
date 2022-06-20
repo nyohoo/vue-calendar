@@ -2,7 +2,7 @@
   <v-menu offset-y>
     <template v-slot:activator="{ on }">
       <v-btn text v-on="on" :class="{'red lighten-4 rounded' : isError}">
-        {{ value || '日付を選択' }}
+        {{ formatDateToJa(value) || '日付を選択' }}
       </v-btn>
     </template>
     <v-date-picker 
@@ -16,8 +16,13 @@
 </template>
 
 <script>
+import { formatDateToJa } from '../functions/datetime';
+
 export default {
   name: 'DateForm',
   props: ['value', 'isError'],
+  methods: {
+    formatDateToJa,
+  }
 }
 </script>
