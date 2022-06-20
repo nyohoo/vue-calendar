@@ -14,9 +14,9 @@
         <div v-show="!allDay">
           <TimeForm v-model="startTime" />
         </div>
-        <DateForm v-model="endDate" />
+        <DateForm v-model="endDate" :isError="isInvalidDatetime" />
         <div v-show="!allDay">
-          <TimeForm v-model="endTime" />
+          <TimeForm v-model="endTime" :isError="isInvalidDatetime" />
         </div>
         <CheckBox v-model="allDay" label="終日" />
       </DialogSection>
