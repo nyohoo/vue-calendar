@@ -28,13 +28,16 @@
       </DialogSection>
     </v-card-text>
     <v-card-actions class="d-flex justify-end">
-      <v-btn @click="submit">保存</v-btn>
+      <v-btn :disabled="isInvalid" @click="submit">保存</v-btn>
     </v-card-actions>
   </v-card>
 </template>
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import { validationMixin } from 'vuelidate';
+import { required } from 'vuelidate/lib/validators';
+
 import DialogSection from "./DialogSection";
 import DateForm from "./DateForm";
 import TimeForm from "./TimeForm";
@@ -44,6 +47,7 @@ import CheckBox from "./CheckBox";
 
 export default {
   name: 'EventFormDialog',
+  mixins: [validationMixin],
   components: {
     DialogSection,
     DateForm,
@@ -62,8 +66,16 @@ export default {
     color: '',
     allDay: false,
   }),
+  validations: {
+    name: { required },
+    startDate: { required },
+    endDate: { required },
+  },
   computed: {
     ...mapGetters('events', ['event']),
+    isInvalid() {
+      return this.$v.$invalid;
+    }
   },
   created() {
     this.startDate = this.event.startDate;
@@ -80,6 +92,9 @@ export default {
       this.setEvent(null);
     },
     submit() {
+      if (this.isInvalid) {
+        return
+      }
       const params = {
         name: this.name,
         start: `${this.startDate} ${this.startTime || ''}`,
