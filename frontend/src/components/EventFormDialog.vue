@@ -14,11 +14,14 @@
         <div v-show="!allDay">
           <TimeForm v-model="startTime" />
         </div>
+        <span class="px-2">–</span>
         <DateForm v-model="endDate" :isError="isInvalidDatetime" />
         <div v-show="!allDay">
           <TimeForm v-model="endTime" :isError="isInvalidDatetime" />
         </div>
-        <CheckBox v-model="allDay" label="終日" />
+      </DialogSection>
+      <DialogSection>
+        <CheckBox v-model="allDay" label="終日" class="ma-0 pa-0" />
       </DialogSection>
       <DialogSection icon="mdi-card-text-outline">
         <TextForm v-model="description" />
