@@ -14,7 +14,7 @@
     </v-card-title>
     <v-card-text>
       <DialogSection icon="mdi-clock-time-three-outline">
-        {{ event.start.toLocaleString() }} ~ {{ event.end.toLocaleString() }}
+        {{ event.startDate }} {{ event.timed ? event.startTime : '' }} ~ {{ event.endDate }} {{ event.timed ? event.endTime : '' }}
       </DialogSection>
     </v-card-text>
     <v-card-text>
