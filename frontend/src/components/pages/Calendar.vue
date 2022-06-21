@@ -35,9 +35,9 @@
 <script>
 import { format } from 'date-fns';
 import { mapGetters, mapActions } from 'vuex';
-import EventDetailDialog from './EventDetailDialog';
-import EventFormDialog from './EventFormDialog.vue';
-import { getDefaultStartAndEnd } from '../functions/datetime';
+import EventDetailDialog from '../events/EventDetailDialog';
+import EventFormDialog from '../events/EventFormDialog';
+import { getDefaultStartAndEnd } from '../../functions/datetime';
 
 export default {
     name: "Calendar",

@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { formatDateToJa } from '../functions/datetime';
+import { formatDateToJa } from '../../functions/datetime';
 
 export default {
   name: 'DateForm',
