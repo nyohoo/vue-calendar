@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { serializeCalendar } from '../../functions/serializers';
 
-const apiUrl = 'http://localhots:3000';
+const apiUrl = 'http://localhost:3000';
 
 const state = {
   calendars: [],
@@ -18,6 +18,7 @@ const mutations = {
 const actions = {
   async fetchCalendars({ commit }) {
     const response = await axios.get(`${apiUrl}/calendars`);
+    console.log(response);
     commit('setCalendars', response.data);
   },
 };
