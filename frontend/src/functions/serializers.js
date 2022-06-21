@@ -17,3 +17,13 @@ export const serializeEvent = event => {
     color: event.color || '#2196F3',
   };
 };
+
+export const serializeCalendar = calendar => {
+  if (calendar === null) {
+    return null;
+  }
+  return {
+    ...calendar,
+    color: calendar.color || '#2196F3',
+  };
+};
