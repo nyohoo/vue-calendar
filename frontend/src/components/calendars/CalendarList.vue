@@ -22,6 +22,18 @@
           hide-details="true"
           ></v-checkbox>
         </v-list-item-content>
+        <v-list-item-action class="ma-0">
+          <v-menu transition="scale-transition" offset-y min-width="100px">
+            <template v-slot:activator="{ on }">
+              <v-btn icon v-on="on">
+                <v-icon size="12px">mdi-dots-vertical</v-icon>
+              </v-btn>
+            </template>
+            <v-list>
+              <v-list-item @click="edit(calendar)">編集</v-list-item>
+            </v-list>
+          </v-menu>
+        </v-list-item-action>
       </v-list-item>
     </v-list-item-group>
     <v-dialog :value="calendar !== null" @click:outside="closeDialog" width="600">
@@ -56,6 +68,9 @@ export default {
       },
       closeDialog() {
         this.setCalendar(null);
+      },
+      edit(calendar) {
+        this.setCalendar(calendar);
       },
     },
     components: { CalendarFormDialog }
