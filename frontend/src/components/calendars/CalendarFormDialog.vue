@@ -41,7 +41,7 @@ export default {
     this.color = this.calendar.color;
   },
   methods: {
-    ...mapActions('calendars', ['createCarendar', setCalendar]),
+    ...mapActions('calendars', ['createCalendar', 'setCalendar']),
     close() {
       this.setCalendar(null);
     },

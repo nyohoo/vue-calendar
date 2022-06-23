@@ -22,7 +22,6 @@ const mutations = {
 const actions = {
   async fetchCalendars({ commit }) {
     const response = await axios.get(`${apiUrl}/calendars`);
-    console.log(response);
     commit('setCalendars', response.data);
   },
   async createCalendar({ commit }, calendar) {
