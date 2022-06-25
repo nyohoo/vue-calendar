@@ -1,4 +1,4 @@
-import { format, addHours } from 'date-fns';
+import { format, addHours, isWithinInterval } from 'date-fns';
 import { ja } from 'date-fns/locale';
 
 export const getTimeIntervalList = () => {
@@ -33,3 +33,7 @@ export const isGreaterEndThanStart = (startDate, startTime, endDate, endTime, al
 export const formatDateToJa = date => {
   return format(new Date(date), 'M月d日(E)', { locale: ja });
 };
+
+export const isDateWithinInterval = (date, startDate, endDate) => {
+  return isWithinInterval(new Date(date), { start: new Date(startDate), end: new Date(endDate) });
+}
